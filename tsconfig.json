@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "skipLibCheck": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "target": "es5",
     "sourceMap": true,
     "jsx": "react-jsx",
