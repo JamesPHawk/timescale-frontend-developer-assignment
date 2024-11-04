@@ -1,7 +1,6 @@
-import users from "../assets/recipientsData.json";
 import React, { useState, useEffect } from "react";
 import { Checkbox } from "./ui/checkbox";
-import { TableBody, Table, Input, Button, Grid, GridItem, Collapsible, Box, IconButton } from "@chakra-ui/react";
+import { Table, Input, Button, Grid, GridItem, Collapsible, Box, IconButton } from "@chakra-ui/react";
 import {
   ActionBarContent,
   ActionBarRoot,
@@ -15,7 +14,7 @@ interface User {
   isSelected: boolean;
 }
 
-const App = () => {
+const App = ({users}) => {
   const [userEmails, setUserEmails] = useState<User[]>(users);
   const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -207,7 +206,7 @@ const App = () => {
                 <Table.ColumnHeader>Available Recipients</Table.ColumnHeader>
               </Table.Row>
             </Table.Header>)}
-            <TableBody>{getRows(availableGroups, ungroupedAvailableUsers, checkedAvailableUsers, setCheckedAvailableUsers, expandedAvailableGroups, true)}</TableBody>
+            <Table.Body>{getRows(availableGroups, ungroupedAvailableUsers, checkedAvailableUsers, setCheckedAvailableUsers, expandedAvailableGroups, true)}</Table.Body>
           </Table.Root>
 
           <ActionBarRoot open={checkedAvailableUsers.length > 0}>
@@ -248,7 +247,7 @@ const App = () => {
                 <Table.ColumnHeader>Selected Recipients</Table.ColumnHeader>
               </Table.Row>
             </Table.Header>
-            <TableBody>{getRows(selectedGroups, ungroupedSelectedUsers, checkedSelectedUsers, setCheckedSelectedUsers, expandedSelectedGroups, false)}</TableBody>
+            <Table.Body>{getRows(selectedGroups, ungroupedSelectedUsers, checkedSelectedUsers, setCheckedSelectedUsers, expandedSelectedGroups, false)}</Table.Body>
           </Table.Root>
 
           <ActionBarRoot open={checkedSelectedUsers.length > 0}>
